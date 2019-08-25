@@ -25,3 +25,9 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
   
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+     - 8080:80
+    links:
+     - mysqldb:db
