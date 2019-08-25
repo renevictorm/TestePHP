@@ -51,18 +51,12 @@
 			return $this->largura * $this->altura;
 		  }
   
-		  public function setId($id) {
-			$this->id = $id;
-		  }
-     
-		  public function getId() {
-			return $this->id;
-		  }
+		 
   
 		  function read(){
  
 				// Query
-				$query ="SELECT	p.x1, p.y1, p.altura, p.largura, p.id
+				$query ="SELECT	p.x1, p.y1, p.altura, p.largura
 						FROM " . $this->table_name . " p";
 	 
 				// Preparando query statement
@@ -78,7 +72,7 @@
  
 			// query to insert record
 			$query ="INSERT INTO " . $this->table_name . "
-					SET	x1=:x1, y1=:y1, altura=:altura, largura=:largura, id=:id";
+					SET	x1=:x1, y1=:y1, altura=:altura, largura=:largura";
  
 			// Preparando query statement
 			$stmt = $this->conn->prepare($query);
@@ -88,14 +82,14 @@
 			$this->y1=htmlspecialchars(strip_tags($this->y1));
 			$this->altura=htmlspecialchars(strip_tags($this->altura));
 			$this->largura=htmlspecialchars(strip_tags($this->largura));
- 			$this->id=htmlspecialchars(strip_tags($this->id));
+ 			
  
 			// Bind 
 			$stmt->bindParam(":x1", $this->x1);
 			$stmt->bindParam(":y1", $this->y1);
 			$stmt->bindParam(":altura", $this->altura);
 			$stmt->bindParam(":largura", $this->largura);
- 			$stmt->bindParam(":id", $this->id);
+ 			
  
 			// Executando query
 			if($stmt->execute()){

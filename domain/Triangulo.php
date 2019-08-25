@@ -11,7 +11,7 @@
 		  private $y2;
 		  private $x3;
 		  private $y3;
-		  private $id;
+		  
  
 		  //Construtor da classe
 		  public function __construct($db){
@@ -66,18 +66,12 @@
 			 return $this->y3;
 		  }
   
-		   public function setId($id) {
-			$this->id = $id;
-		  }
-     
-		  public function getId() {
-			return $this->id;
-		  }
+
      
 		  function read(){
  
 				// select all query
-				$query ="SELECT p.x1, p.y1, p.x2, p.y2, p.x3, p.y3, p.id
+				$query ="SELECT p.x1, p.y1, p.x2, p.y2, p.x3, p.y3
 						FROM " . $this->table_name . " p";
 	 
 				// prepare query statement
@@ -95,7 +89,7 @@
 			$query = "INSERT INTO
 						" . $this->table_name . "
 					SET
-						x1=:x1, y1=:y1, x2=:x2, y2=:y2, x3=:x3, y3=:y3, id=:id";
+						x1=:x1, y1=:y1, x2=:x2, y2=:y2, x3=:x3, y3=:y3";
  
 			// Preparando query statement
 			$stmt = $this->conn->prepare($query);
@@ -107,7 +101,7 @@
 			$this->y2=htmlspecialchars(strip_tags($this->y2));
 			$this->x3=htmlspecialchars(strip_tags($this->x3));
 			$this->y2=htmlspecialchars(strip_tags($this->y3));
-			$this->id=htmlspecialchars(strip_tags($this->id));
+			
  
 			// Bind
 			$stmt->bindParam(":x1", $this->x1);
@@ -116,7 +110,7 @@
 			$stmt->bindParam(":y2", $this->y2);
 			$stmt->bindParam(":x3", $this->x3);
 			$stmt->bindParam(":y3", $this->y3);
-			$stmt->bindParam(":id", $this->id);
+			
  
 			// Executando a query
 			if($stmt->execute()){
