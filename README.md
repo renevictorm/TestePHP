@@ -37,6 +37,9 @@ Uma vez com o Docker instalado, basta ir até o diretório raiz da aplicação e
 ```sh
  $ docker-compose up --build
 ```
+Assim que estiver rodando acesse o PhpMyAdmin com user e senha "root" e execute o SQL forncecido nesse diretório ou o importe.
+
+![](/images/SQL.png)
 
 ## Testando
 
